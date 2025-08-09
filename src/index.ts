@@ -111,8 +111,13 @@ class MCPAIGatewayServer {
    * Create HTTP client with proxy support
    */
   private createHttpClient(): AxiosInstance {
+    const timeoutSeconds = process.env.REQUEST_TIMEOUT 
+      ? parseInt(process.env.REQUEST_TIMEOUT) 
+      : 60; // Default 60 seconds
+    const timeoutMs = timeoutSeconds * 1000;
+
     const axiosConfig: AxiosRequestConfig = {
-      timeout: 60000,
+      timeout: timeoutMs,
       headers: {
         'Content-Type': 'application/json',
       },

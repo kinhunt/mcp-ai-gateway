@@ -71,6 +71,7 @@ AI will automatically select appropriate models for different subtasks!
 | `API_ENDPOINT` | ⚪ | Custom endpoint | `https://api.openai.com/v1` |
 | `DEFAULT_MODEL` | ⚪ | Default model | `gpt-4o` |
 | `DESCRIPTION` | ⚪ | Custom model description | See examples below |
+| `REQUEST_TIMEOUT` | ⚪ | HTTP request timeout in seconds | `60` (default) |
 
 ### API Format Support
 
@@ -149,6 +150,7 @@ export HTTPS_PROXY=https://your-proxy:8080
 export DEFAULT_TEMPERATURE=0.7
 export DEFAULT_MAX_TOKENS=2000
 export OPENAI_ORGANIZATION=org-your-org-id  # OpenAI only
+export REQUEST_TIMEOUT=60  # HTTP timeout in seconds (default: 60)
 ```
 
 ### Multi-Provider Configuration Example
