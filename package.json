@@ -1,7 +1,7 @@
 {
   "name": "mcp-ai-gateway",
-  "version": "1.0.0",
-  "description": "MCP server that acts as a unified gateway for multiple AI API providers (OpenAI, Anthropic, etc.)",
+  "version": "1.1.0",
+  "description": "Unified MCP server enabling AI assistants to intelligently select and switch between different AI models (OpenAI, Anthropic, etc.) within the same conversation",
   "main": "build/index.js",
   "bin": {
     "mcp-ai-gateway": "build/index.js"
@@ -13,7 +13,7 @@
     "dev": "ts-node src/index.ts",
     "start": "node build/index.js"
   },
-  "keywords": ["mcp", "ai", "gateway", "openai", "anthropic", "llm", "api"],
+  "keywords": ["mcp", "ai", "gateway", "openai", "anthropic", "llm", "api", "model-selection", "chat-completion", "claude", "gpt"],
   "author": "MCP AI Gateway",
   "license": "MIT",
   "files": [
@@ -36,10 +36,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/mcp-ai-gateway.git"
+    "url": "git+https://github.com/kinhunt/mcp-ai-gateway.git"
   },
   "bugs": {
-    "url": "https://github.com/username/mcp-ai-gateway/issues"
+    "url": "https://github.com/kinhunt/mcp-ai-gateway/issues"
   },
-  "homepage": "https://github.com/username/mcp-ai-gateway#readme"
+  "homepage": "https://github.com/kinhunt/mcp-ai-gateway#readme"
 }
