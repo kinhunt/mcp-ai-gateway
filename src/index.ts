@@ -27,6 +27,14 @@ interface ChatCompletionParams {
   frequency_penalty?: number;
   presence_penalty?: number;
   stop?: string | string[];
+  response_format?: {
+    type: 'text' | 'json_object' | 'json_schema';
+    json_schema?: {
+      name: string;
+      schema: Record<string, any>;
+      strict?: boolean;
+    };
+  };
 }
 
 /**
@@ -366,6 +374,10 @@ class MCPAIGatewayServer {
 
       if (params.stop !== undefined) {
         openaiData.stop = params.stop;
+      }
+
+      if (params.response_format !== undefined) {
+        openaiData.response_format = params.response_format;
       }
 
       return openaiData;

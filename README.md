@@ -282,6 +282,42 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
 | `frequency_penalty` | number | Frequency penalty |
 | `presence_penalty` | number | Presence penalty |
 | `stop` | string/array | Stop sequences |
+| `response_format` | object | **NEW**: Format of the response (OpenAI only) |
+
+### Response Format Support
+
+The `response_format` parameter enables structured outputs from OpenAI-compatible models:
+
+```javascript
+// JSON object mode
+{
+  "response_format": {
+    "type": "json_object"
+  }
+}
+
+// JSON schema mode (with strict validation)
+{
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "user_profile",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "age": {"type": "number"},
+          "email": {"type": "string", "format": "email"}
+        },
+        "required": ["name", "age"]
+      }
+    }
+  }
+}
+```
+
+**Note**: This parameter is only supported for OpenAI-format APIs and will be ignored for Anthropic-format requests.
 
 ## 📚 Documentation
 
