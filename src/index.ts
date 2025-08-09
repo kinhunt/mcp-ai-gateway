@@ -225,6 +225,37 @@ class MCPAIGatewayServer {
                   ],
                   description: 'Up to 4 sequences where the API will stop generating further tokens',
                 },
+                response_format: {
+                  type: 'object',
+                  description: 'Format of the response (OpenAI only). Supports json_object and json_schema types.',
+                  properties: {
+                    type: {
+                      type: 'string',
+                      enum: ['text', 'json_object', 'json_schema'],
+                      description: 'The type of response format',
+                    },
+                    json_schema: {
+                      type: 'object',
+                      description: 'JSON schema definition (required when type is json_schema)',
+                      properties: {
+                        name: {
+                          type: 'string',
+                          description: 'Name of the schema',
+                        },
+                        schema: {
+                          type: 'object',
+                          description: 'JSON schema object',
+                        },
+                        strict: {
+                          type: 'boolean',
+                          description: 'Whether to use strict validation',
+                        },
+                      },
+                      required: ['name', 'schema'],
+                    },
+                  },
+                  required: ['type'],
+                },
               },
               required: ['messages'],
             },
