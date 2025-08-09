@@ -301,6 +301,23 @@ Comprehensive guides and tutorials for getting the most out of MCP AI Gateway:
 
 *More tutorials and guides coming soon! Check back regularly or [suggest topics](https://github.com/kinhunt/mcp-ai-gateway/issues) you'd like to see covered.*
 
+## 📖 Documentation & Guides
+
+Comprehensive how-to guides for getting the most out of MCP AI Gateway:
+
+### Integration Guides
+- **[How to Access OpenRouter's Free Gemini Models in Claude Desktop](docs/openrouter-free-models-claude-desktop.md)** - Save up to 80% on AI costs while using Claude Desktop's interface
+- **[How to Use ChatGPT Models in Gemini CLI](docs/chatgpt-models-gemini-cli.md)** - Break free from Google's model limitations and access OpenAI's latest models in Gemini CLI
+
+### Advanced Workflows  
+- **[How to Create Multi-Model Workflows in Claude Desktop Using Sub-Agent Descriptions](docs/multi-model-workflows-claude-desktop.md)** - Master intelligent model orchestration for complex projects
+
+### Coming Soon
+- How to Build AI-Powered Code Review Pipelines
+- How to Set Up Cost-Effective Multi-Team AI Access
+- How to Create Custom Model Selection Strategies
+- Enterprise Deployment and Security Best Practices
+
 ## 🤝 Contributing
 
 Issues and Pull Requests are welcome!
