@@ -41,7 +41,7 @@ interface GatewayConfig {
   defaultModel?: string;
   defaultTemperature?: number;
   defaultMaxTokens?: number;
-  availableModels?: Array<{ id: string; description: string }>;
+  description?: string;
 }
 
 /**
@@ -92,16 +92,7 @@ class MCPAIGatewayServer {
       defaultEndpoint = 'https://api.openai.com/v1/chat/completions';
     }
 
-    const availableModelsStr = process.env.AVAILABLE_MODELS;
-    let availableModels: Array<{ id: string; description: string }> = [];
-    
-    if (availableModelsStr) {
-      try {
-        availableModels = JSON.parse(availableModelsStr);
-      } catch (error) {
-        console.warn('Failed to parse AVAILABLE_MODELS environment variable:', error);
-      }
-    }
+    const customDescription = process.env.DESCRIPTION;
 
     return {
       apiFormat,
@@ -112,7 +103,7 @@ class MCPAIGatewayServer {
       defaultModel: process.env.DEFAULT_MODEL,
       defaultTemperature: process.env.DEFAULT_TEMPERATURE ? parseFloat(process.env.DEFAULT_TEMPERATURE) : undefined,
       defaultMaxTokens: process.env.DEFAULT_MAX_TOKENS ? parseInt(process.env.DEFAULT_MAX_TOKENS) : undefined,
-      availableModels,
+      description: customDescription,
     };
   }
 
@@ -142,8 +133,8 @@ class MCPAIGatewayServer {
    */
   private setupToolHandlers(): void {
     this.server.setRequestHandler(ListToolsRequestSchema, async () => {
-      const availableModelsInfo = this.config.availableModels?.length 
-        ? `\n\nAvailable models:\n${this.config.availableModels.map(m => `- ${m.id}: ${m.description}`).join('\n')}`
+      const customDescriptionInfo = this.config.description 
+        ? `\n\n${this.config.description}`
         : '';
 
       return {
@@ -152,7 +143,7 @@ class MCPAIGatewayServer {
             name: 'chat_completion',
             description: `Send a chat completion request to the configured AI API provider (${this.config.apiFormat.toUpperCase()}). ` +
                         `Supports parameters like model, messages, temperature, max_tokens, stream, etc. ` +
-                        `Returns the raw response from the API without format conversion.${availableModelsInfo}`,
+                        `Returns the raw response from the API without format conversion.${customDescriptionInfo}`,
             inputSchema: {
               type: 'object',
               properties: {
