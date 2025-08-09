@@ -97,6 +97,19 @@ Direct support for Anthropic Claude models:
 }
 ```
 
+#### OpenRouter Format
+Access 400+ AI models through OpenRouter's unified API:
+
+```json
+{
+  "API_FORMAT": "openai",
+  "API_KEY": "sk-or-your-openrouter-key",
+  "API_ENDPOINT": "https://openrouter.ai/api/v1",
+  "DEFAULT_MODEL": "anthropic/claude-3.5-sonnet",
+  "DESCRIPTION": "OpenRouter models:\n- anthropic/claude-3.5-sonnet: Latest Claude with enhanced reasoning\n- openai/gpt-4o: GPT-4o with multimodal capabilities\n- google/gemini-pro-1.5: Google's advanced Gemini model\n- meta-llama/llama-3.1-405b: Meta's largest Llama model"
+}
+```
+
 ### Custom Description Examples
 
 Through the `DESCRIPTION` environment variable, you can provide detailed model selection guidance for AI:
@@ -162,6 +175,17 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
         "API_KEY": "sk-ant-your-key",
         "DESCRIPTION": "Anthropic models: Claude Opus 4, Claude Sonnet 4"
       }
+    },
+    "openrouter-gateway": {
+      "command": "npx",
+      "args": ["mcp-ai-gateway"],
+      "env": {
+        "API_FORMAT": "openai",
+        "API_KEY": "sk-or-your-openrouter-key",
+        "API_ENDPOINT": "https://openrouter.ai/api/v1",
+        "DEFAULT_MODEL": "anthropic/claude-3.5-sonnet",
+        "DESCRIPTION": "400+ models via OpenRouter:\n- anthropic/claude-3.5-sonnet: Enhanced reasoning\n- openai/gpt-4o: Multimodal capabilities\n- google/gemini-pro-1.5: Advanced Gemini\n- meta-llama/llama-3.1-405b: Largest open model\n- Cost-effective with automatic fallbacks"
+      }
     }
   }
 }
@@ -170,11 +194,12 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
 ## 🔧 Technical Features
 
 - **🔌 Plug & Play**: Use directly via npx, no installation required
-- **🌐 Multi-API Support**: OpenAI, Anthropic, custom endpoints
+- **🌐 Multi-API Support**: OpenAI, Anthropic, OpenRouter (400+ models), custom endpoints
 - **🏗️ Extensible Architecture**: Easy to add new API format support
 - **🛡️ Enterprise Ready**: Proxy support, error handling, secure authentication
 - **⚡ High Performance**: Direct HTTP calls, no additional overhead
 - **📝 Fully Typed**: Written in TypeScript, type-safe
+- **💰 Cost Optimization**: OpenRouter integration with automatic fallbacks
 
 ## 🎯 Use Cases
 
@@ -197,6 +222,7 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
 **Access premium models through official AI clients:**
 
 - **Claude Desktop with OpenAI Models**: Use your OpenAI API key to access GPT-5, GPT-4o in Claude Desktop interface
+- **OpenRouter Integration**: Access 400+ models through one API with automatic fallbacks and cost optimization
 - **Third-Party API Integration**: Connect expensive or specialized models (like Claude Opus 4) through custom endpoints
 - **Cost Optimization**: Use cheaper third-party API providers while maintaining the familiar Claude Desktop/Gemini CLI experience
 - **Model Comparison**: Test different providers' implementations of the same model within one interface
@@ -220,6 +246,25 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
 }
 ```
 
+**Example Configuration for OpenRouter access in Claude Desktop:**
+```json
+{
+  "mcpServers": {
+    "openrouter-access": {
+      "command": "npx",
+      "args": ["mcp-ai-gateway"],
+      "env": {
+        "API_FORMAT": "openai",
+        "API_KEY": "sk-or-your-openrouter-key",
+        "API_ENDPOINT": "https://openrouter.ai/api/v1",
+        "DEFAULT_MODEL": "anthropic/claude-3.5-sonnet",
+        "DESCRIPTION": "Access 400+ models via OpenRouter:\n- Choose from OpenAI, Anthropic, Google, Meta models\n- Automatic cost optimization and fallbacks\n- Unified pricing and billing across providers\n- Real-time model availability and performance"
+      }
+    }
+  }
+}
+```
+
 ## 📚 API Reference
 
 ### chat_completion Tool Parameters
@@ -235,6 +280,26 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
 | `frequency_penalty` | number | Frequency penalty |
 | `presence_penalty` | number | Presence penalty |
 | `stop` | string/array | Stop sequences |
+
+## 📚 Documentation
+
+Comprehensive guides and tutorials for getting the most out of MCP AI Gateway:
+
+### Getting Started
+- **[How to Access OpenRouter's Free Gemini Models in Claude Desktop](docs/openrouter-free-models-claude-desktop.md)** - Save up to 80% on AI costs while enjoying Claude Desktop's interface
+- **[How to Use ChatGPT Models in Gemini CLI](docs/chatgpt-models-gemini-cli.md)** - Access OpenAI's latest models directly within your Gemini CLI workflow
+
+### Advanced Workflows
+- **[How to Create Multi-Model Workflows in Claude Desktop](docs/multi-model-workflows-claude-desktop.md)** - Master intelligent model orchestration for complex projects
+- **[How to Reduce AI Costs by 80% with Smart Model Routing](docs/reduce-ai-costs-openrouter.md)** - Transform your AI spending through intelligent cost optimization
+
+### Use Cases & Examples
+- Client integration tutorials
+- Enterprise deployment guides
+- Cost optimization strategies
+- Workflow automation patterns
+
+*More tutorials and guides coming soon! Check back regularly or [suggest topics](https://github.com/kinhunt/mcp-ai-gateway/issues) you'd like to see covered.*
 
 ## 🤝 Contributing
 
