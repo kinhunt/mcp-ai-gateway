@@ -1,7 +1,7 @@
 {
   "name": "mcp-ai-gateway",
-  "version": "1.1.0",
-  "description": "Unified MCP server enabling AI assistants to intelligently select and switch between different AI models (OpenAI, Anthropic, etc.) within the same conversation",
+  "version": "1.2.0",
+  "description": "Universal MCP server enabling AI clients (Claude Desktop, etc.) to access third-party models (GPT-5, Claude Opus 4, Gemini 2.5 Pro) with intelligent model selection and custom endpoints",
   "main": "build/index.js",
   "bin": {
     "mcp-ai-gateway": "build/index.js"
@@ -13,7 +13,7 @@
     "dev": "ts-node src/index.ts",
     "start": "node build/index.js"
   },
-  "keywords": ["mcp", "ai", "gateway", "openai", "anthropic", "llm", "api", "model-selection", "chat-completion", "claude", "gpt"],
+  "keywords": ["mcp", "ai", "gateway", "openai", "anthropic", "llm", "api", "model-selection", "chat-completion", "claude", "gpt", "claude-desktop", "third-party", "gpt-5", "opus-4", "gemini"],
   "author": "MCP AI Gateway",
   "license": "MIT",
   "files": [

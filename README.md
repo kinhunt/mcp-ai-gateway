@@ -7,16 +7,16 @@ A unified MCP (Model Context Protocol) server that enables AI assistants to inte
 ### Intelligent Model Selection
 The core value of MCP AI Gateway lies in enabling AI assistants to **automatically choose the most suitable model based on task requirements**:
 
-- **Code Tasks**: Let AI choose Claude Sonnet 4 for complex reasoning
-- **Quick Q&A**: Let AI choose GPT-3.5 Turbo for fast responses
-- **Creative Writing**: Let AI choose GPT-4 or Gemini for better creativity
-- **Multimodal Processing**: Let AI choose vision-capable models
+- **Code Tasks**: Let AI choose Claude Opus 4 for advanced code analysis
+- **Quick Q&A**: Let AI choose GPT-4o for fast, reliable responses
+- **Creative Writing**: Let AI choose GPT-5 or Gemini 2.5 Pro for superior creativity
+- **Multimodal Processing**: Let AI choose vision-capable models like GPT-4o
 
 ### Workflow Example
 Within a single conversation, AI might:
-1. Use **Claude** to analyze complex code logic
-2. Use **GPT-4** to generate creative solutions
-3. Use **Gemini** for quick verification
+1. Use **Claude Opus 4** to analyze complex code logic
+2. Use **GPT-5** to generate creative solutions
+3. Use **Gemini 2.5 Pro** for quick verification
 
 All achieved through a unified MCP tool, no manual switching required!
 
@@ -44,8 +44,8 @@ Add to your Claude Desktop MCP configuration:
         "API_FORMAT": "openai",
         "API_KEY": "your-api-key-here",
         "API_ENDPOINT": "https://api.openai.com/v1",
-        "DEFAULT_MODEL": "gpt-4",
-        "DESCRIPTION": "Available models:\n- gpt-4: Best for complex reasoning and analysis\n- gpt-3.5-turbo: Fast responses for simple tasks\n- claude-3-sonnet: Excellent for code and technical tasks"
+        "DEFAULT_MODEL": "gpt-4o",
+        "DESCRIPTION": "Available models:\n- gpt-5: Latest OpenAI model with superior reasoning and creativity\n- gpt-4o: Multimodal model with fast responses\n- claude-opus-4: World's best coding model with extended thinking"
       }
     }
   }
@@ -69,7 +69,7 @@ AI will automatically select appropriate models for different subtasks!
 | `API_FORMAT` | ✅ | API format | `openai` or `anthropic` |
 | `API_KEY` | ✅ | API key | `sk-...` |
 | `API_ENDPOINT` | ⚪ | Custom endpoint | `https://api.openai.com/v1` |
-| `DEFAULT_MODEL` | ⚪ | Default model | `gpt-4` |
+| `DEFAULT_MODEL` | ⚪ | Default model | `gpt-4o` |
 | `DESCRIPTION` | ⚪ | Custom model description | See examples below |
 
 ### API Format Support
@@ -105,16 +105,18 @@ Through the `DESCRIPTION` environment variable, you can provide detailed model s
 export DESCRIPTION="Available AI models and their strengths:
 
 🧠 Reasoning & Analysis:
-- claude-3-sonnet-20240229: Excellent for code analysis, debugging, and technical problem-solving
-- gpt-4: Superior reasoning, complex analysis, and detailed explanations
+- claude-opus-4: World's best coding model with 72.5% on SWE-Bench
+- gpt-5: Latest model with deep reasoning capabilities and lowest error rates
 
 ⚡ Speed & Efficiency:  
-- gpt-3.5-turbo: Fast responses for simple questions and basic tasks
-- claude-3-haiku-20240307: Quick processing for straightforward requests
+- gpt-4o: Fast multimodal responses with near-instant processing
+- claude-sonnet-4: Quick processing with extended thinking capabilities
+- gemini-2.5-flash: Ultra-fast responses for simple queries
 
 🎨 Creativity & Writing:
-- gpt-4: Creative writing, storytelling, and content generation
-- gemini-pro: Good balance of creativity and factual accuracy
+- gpt-5: Superior creative writing and content generation
+- gemini-2.5-pro: Excellent balance of creativity and factual accuracy
+- claude-opus-4: Advanced reasoning for complex creative tasks
 
 💡 Choose the model that best fits your specific task requirements!"
 ```
@@ -149,7 +151,7 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
       "env": {
         "API_FORMAT": "openai",
         "API_KEY": "sk-your-openai-key",
-        "DESCRIPTION": "OpenAI models: GPT-4, GPT-3.5-turbo"
+        "DESCRIPTION": "OpenAI models: GPT-5, GPT-4o, GPT-4.5"
       }
     },
     "claude-gateway": {
@@ -158,7 +160,7 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
       "env": {
         "API_FORMAT": "anthropic",
         "API_KEY": "sk-ant-your-key",
-        "DESCRIPTION": "Anthropic models: Claude-3 Sonnet, Haiku, Opus"
+        "DESCRIPTION": "Anthropic models: Claude Opus 4, Claude Sonnet 4"
       }
     }
   }
@@ -177,8 +179,8 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
 ## 🎯 Use Cases
 
 ### 1. Development Workflow
-- Use Claude for code review and optimization suggestions
-- Use GPT-4 for technical documentation generation
+- Use Claude Opus 4 for code review and optimization suggestions
+- Use GPT-5 for technical documentation generation
 - Use fast models for syntax checking
 
 ### 2. Content Creation
@@ -190,6 +192,33 @@ You can configure multiple MCP AI Gateway instances to connect to different prov
 - Use reasoning models for complex data analysis
 - Use specialized models for report generation
 - Use fast models for summary generation
+
+### 4. Third-Party Model Access in AI Clients
+**Access premium models through official AI clients:**
+
+- **Claude Desktop with OpenAI Models**: Use your OpenAI API key to access GPT-5, GPT-4o in Claude Desktop interface
+- **Third-Party API Integration**: Connect expensive or specialized models (like Claude Opus 4) through custom endpoints
+- **Cost Optimization**: Use cheaper third-party API providers while maintaining the familiar Claude Desktop/Gemini CLI experience
+- **Model Comparison**: Test different providers' implementations of the same model within one interface
+- **Enterprise Solutions**: Access internal or fine-tuned models through your organization's API gateway
+
+**Example Configuration for accessing OpenAI models in Claude Desktop:**
+```json
+{
+  "mcpServers": {
+    "openai-access": {
+      "command": "npx",
+      "args": ["mcp-ai-gateway"],
+      "env": {
+        "API_FORMAT": "openai",
+        "API_KEY": "sk-your-openai-key",
+        "API_ENDPOINT": "https://api.openai.com/v1",
+        "DESCRIPTION": "Access OpenAI's latest models:\n- gpt-5: Most advanced reasoning\n- gpt-4o: Multimodal capabilities\n- Compare with Claude's built-in models"
+      }
+    }
+  }
+}
+```
 
 ## 📚 API Reference
 
