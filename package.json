@@ -1,0 +1,45 @@
+{
+  "name": "mcp-ai-gateway",
+  "version": "1.0.0",
+  "description": "MCP server that acts as a unified gateway for multiple AI API providers (OpenAI, Anthropic, etc.)",
+  "main": "build/index.js",
+  "bin": {
+    "mcp-ai-gateway": "build/index.js"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "prepare": "npm run build",
+    "dev": "ts-node src/index.ts",
+    "start": "node build/index.js"
+  },
+  "keywords": ["mcp", "ai", "gateway", "openai", "anthropic", "llm", "api"],
+  "author": "MCP AI Gateway",
+  "license": "MIT",
+  "files": [
+    "build/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.2",
+    "axios": "^1.11.0",
+    "https-proxy-agent": "^7.0.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/username/mcp-ai-gateway.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/mcp-ai-gateway/issues"
+  },
+  "homepage": "https://github.com/username/mcp-ai-gateway#readme"
+}
