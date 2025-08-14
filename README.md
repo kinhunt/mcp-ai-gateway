@@ -323,9 +323,12 @@ The `response_format` parameter enables structured outputs from OpenAI-compatibl
 
 ### Common Issues
 
-#### "Cannot find module node_modules/es-set-tostringtag/index.js"
+#### "Cannot find module" Errors with npx
 
-This error typically occurs when using `npx mcp-ai-gateway` due to incomplete dependency downloads in the npx cache.
+This error typically occurs when using `npx mcp-ai-gateway` due to incomplete dependency downloads in the npx cache. You might see errors like:
+- `Cannot find module 'node_modules/es-set-tostringtag/index.js'`
+- `Cannot find module 'axios'`
+- `Cannot find module '@modelcontextprotocol/sdk'`
 
 **Solution:**
 ```bash
