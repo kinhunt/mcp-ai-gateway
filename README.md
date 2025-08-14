@@ -319,6 +319,49 @@ The `response_format` parameter enables structured outputs from OpenAI-compatibl
 
 **Note**: This parameter is only supported for OpenAI-format APIs and will be ignored for Anthropic-format requests.
 
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### "Cannot find module node_modules/es-set-tostringtag/index.js"
+
+This error typically occurs when using `npx mcp-ai-gateway` due to incomplete dependency downloads in the npx cache.
+
+**Solution:**
+```bash
+# Clear npx cache completely
+rm -rf ~/.npm/_npx
+npm cache clean --force
+
+# Then retry
+npx mcp-ai-gateway
+```
+
+**Why this happens:** npx sometimes fails to download all transitive dependencies, especially on slower network connections or when the package has many dependencies. Clearing the cache forces a fresh, complete download.
+
+#### API Key Not Found
+
+Make sure you've set the required environment variables in your MCP client configuration:
+```json
+{
+  "env": {
+    "API_KEY": "your-api-key-here",
+    "API_FORMAT": "openai"
+  }
+}
+```
+
+#### Connection Timeouts
+
+If you're experiencing timeout issues, increase the request timeout:
+```json
+{
+  "env": {
+    "REQUEST_TIMEOUT": "120"
+  }
+}
+```
+
 ## 📚 Documentation
 
 Comprehensive guides and tutorials for getting the most out of MCP AI Gateway:
